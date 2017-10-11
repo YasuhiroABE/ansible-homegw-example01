@@ -1,14 +1,36 @@
 ---
+# example: localhost
 hostname: ''
+
+# example: example.org
 external_domain: ''
+
+# example: 192.168.0.1/24
 external_hostprefix: ''
-external_gateway: ''
+
+# example: ens33
 external_eth_device: ''
+
+# example: 8.8.8.8
 external_nameservers: []
+
+# [Optional] If set, gateway line will be added to the interfaces file.
+external_gateway: ''
+
+# example: subnet.example.org
 internal_domain: ''
+
+# example: 10.0.0.1/24
 internal_hostprefix: ''
-internal_eth_device: ''
-internal_br0_devices: []
+
+# example: [ens34, ens35]
+internal_bridge_devices: []
+
+# example: 10.0.0.100
 internal_dhcp_iprange_from: ''
+
+# example: 10.0.0.200
 internal_dhcp_iprange_to: ''
+
+# example: smtp.example.org
 smtp_relayhost: ''
