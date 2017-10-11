@@ -1,0 +1,14 @@
+---
+hostname: ''
+external_domain: ''
+external_hostprefix: ''
+external_gateway: ''
+external_eth_device: ''
+external_nameservers: []
+internal_domain: ''
+internal_hostprefix: ''
+internal_eth_device: ''
+internal_br0_devices: []
+internal_dhcp_iprange_from: ''
+internal_dhcp_iprange_to: ''
+smtp_relayhost: ''

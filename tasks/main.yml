@@ -1,0 +1,55 @@
+---
+- name: setup my favorite settings
+  include_role:
+    name: YasuhiroABE.myfavorite-setting
+  vars:
+    mfts_sshd_listen_ipaddr: "{{ internal_hostprefix|ipaddr('address') }}"
+    
+- name: setup my network
+  include_role:
+    name: YasuhiroABE.homegw-network
+  vars:
+    homegw_network_setup_br0_hostprefix: "{{ internal_hostprefix }}"
+    homegw_network_setup_br0_devices: "{{ internal_bridge_devices }}"
+    homegw_network_setup_external_device: "{{ external_eth_device }}"
+    homegw_network_setup_external_hostprefix: "{{ external_hostprefix }}"
+    homegw_network_setup_external_gateway: "{{ external_gateway }}"
+    homegw_network_resolv_nameservers: "{{ external_nameservers }}"
+    homegw_network_resolv_search:
+      - "{{ external_domain }}"
+      - "{{ internal_domain }}"
+
+- name: setup
+  include_role:
+    name: YasuhiroABE.homegw-dnsmasq
+  vars:
+    dnsmasq_eth_device: "br0"
+    dnsmasq_ipv4_hostprefix: "{{ internal_hostprefix }}"
+    dnsmasq_ipv4_domainname: "{{ internal_domain }}"
+    dnsmasq_dhcp_domain_search_list:
+      - "{{ internal_domain }}."
+      - "{{ external_domain }}."
+    dnsmasq_dhcp_range:
+      from_ipaddr: "{{ internal_dhcp_iprange_from }}"
+      to_ipaddr: "{{ internal_dhcp_iprange_to }}"
+    dnsmasq_ntpd_enabled: False
+
+- name: setup iptables
+  include_role:
+    name: YasuhiroABE.homegw-iptables
+  vars:
+    homegw_iptables_external_eth_device: "{{ external_eth_device }}"
+    homegw_iptables_internal_eth_device: "{{ internal_eth_device }}"
+
+- name: setup postfix
+  include_role:
+    name: YasuhiroABE.homegw-postfix
+  vars:
+    homegw_postfix_external_hostprefix: "{{ external_hostprefix }}"
+    homegw_postfix_internal_hostprefix: "{{ internal_hostprefix }}"
+    homegw_postfix_external_hostname: "{{ hostname }}"
+    homegw_postfix_external_domainname: "{{ external_domain }}"
+    homegw_postfix_internal_hostname: "{{ hostname }}"
+    homegw_postfix_internal_domainname: "{{ internal_domain }}"
+    homegw_postfix_relayhost: "{{ smtp_relayhost }}"
+    
