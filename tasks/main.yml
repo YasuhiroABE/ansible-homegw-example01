@@ -3,6 +3,7 @@
   include_role:
     name: YasuhiroABE.myfavorite-setting
   vars:
+    mfts_hostname: "{{ hostname }}"
     mfts_sshd_listen_ipaddr: "{{ internal_hostprefix|ipaddr('address') }}"
     
 - name: setup my network
@@ -39,7 +40,7 @@
     name: YasuhiroABE.homegw-iptables
   vars:
     homegw_iptables_external_eth_device: "{{ external_eth_device }}"
-    homegw_iptables_internal_eth_device: "{{ internal_eth_device }}"
+    homegw_iptables_internal_eth_device: "br0"
 
 - name: setup postfix
   include_role:

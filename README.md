@@ -8,13 +8,13 @@ This is NOT an internet gateway or home router.
             <smtp rela>
                  |
                  |            +----------+---+----------+
-     <internet>--+--<router>--|  ens33   |   |          |
+     <internet>--+--<router>--|  nic0    |   |          |
               192.168.0.1/24  +--+-------+ A | iptables |
-                 example.org  |  | ens34 | P | dnsmasq  |
+                 example.org  |  | nic1  | P | dnsmasq  |
                               |  ---+    | U | postfix  |
                     <switch>--| br0 |----| 2 | sshd     |
                  10.0.0.1/24  |  +--+    | C | cron-apt |
-          subnet.example.org  |  | ens35 |   | ...      |
+          subnet.example.org  |  | nic2  |   | ...      |
                               +--+-------+---+----------+
 
 Requirements
