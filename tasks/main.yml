@@ -32,7 +32,7 @@
     dnsmasq_dhcp_range:
       from_ipaddr: "{{ internal_dhcp_iprange_from }}"
       to_ipaddr: "{{ internal_dhcp_iprange_to }}"
-    dnsmasq_ntpd_enabled: False
+    dnsmasq_ntpd_enabled: True
 
 - name: setup iptables
   include_role:
