@@ -52,7 +52,10 @@ The 'internal' means
     
     # example: 8.8.8.8
     external_nameservers: []
-    
+
+    # added an accept rule to iptables; example: [22,80]
+    external_accept_tcp_ports: []
+
     # [Optional] If set, gateway line will be added to the interfaces file.
     external_gateway: ''
     
@@ -94,6 +97,9 @@ Example Playbook
         external_eth_device: ens33
         external_nameservers:
           - 8.8.8.8
+        external_accept_tcp_ports:
+          - 22
+          - 80
         hostname: homegw
         internal_domain: subnet.example.org
         internal_hostprefix: 192.168.10.1/24
