@@ -55,10 +55,13 @@ The 'internal' means
 
     # added an accept rule to iptables; example: [22,80]
     external_accept_tcp_ports: []
-
-    # [Optional] If set, gateway line will be added to the interfaces file.
-    external_gateway: ''
     
+    # If set, gateway line will be added to the interfaces file.
+    external_gateway: ''
+
+    # list of external ntp servers ; example: [ntp1.jst.mfeed.ad.jp]
+    external_ntp_servers: []
+
     # example: subnet.example.org
     internal_domain: ''
     
@@ -85,6 +88,7 @@ Dependencies
 * YasuhiroABE.homegw-dnsmasq 
 * YasuhiroABE.homegw-iptables
 * YasuhiroABE.homegw-postfix
+* YasuhiroABE.homegw-openntpd
 
 Example Playbook
 ----------------
@@ -100,6 +104,9 @@ Example Playbook
         external_accept_tcp_ports:
           - 22
           - 80
+        external_ntp_servers:
+          - ntp1.jst.mfeed.ad.jp
+          - ntp2.jst.mfeed.ad.jp
         hostname: homegw
         internal_domain: subnet.example.org
         internal_hostprefix: 192.168.10.1/24

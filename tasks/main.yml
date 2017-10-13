@@ -53,4 +53,11 @@
     homegw_postfix_internal_hostname: "{{ hostname }}"
     homegw_postfix_internal_domainname: "{{ internal_domain }}"
     homegw_postfix_relayhost: "{{ smtp_relayhost }}"
+
+- name: setup openntpd
+  include_role:
+    name: YasuhiroABE.homegw-openntpd
+  vars:
+    homegw_openntpd_listenon_address: "{{ internal_hostprefix|ipaddr('address') }}"
+    homegw_openntpd_server_addresses: "{{ external_ntp_servers }}"
     

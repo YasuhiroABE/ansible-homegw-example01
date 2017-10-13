@@ -40,4 +40,5 @@ dependencies:
   - YasuhiroABE.homegw-dnsmasq 
   - YasuhiroABE.homegw-iptables
   - YasuhiroABE.homegw-postfix
+  - YasuhiroABE.homegw-openntpd
   

@@ -14,7 +14,13 @@ external_eth_device: ''
 # example: 8.8.8.8
 external_nameservers: []
 
-# [Optional] If set, gateway line will be added to the interfaces file.
+# list of external ntp servers ; example: [ntp1.jst.mfeed.ad.jp]
+external_ntp_servers: []
+
+# added an accept rule to iptables; example: [22,80]  
+external_accept_tcp_ports: []
+
+# If set, gateway line will be added to the interfaces file.
 external_gateway: ''
 
 # example: subnet.example.org
