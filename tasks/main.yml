@@ -17,8 +17,7 @@
     homegw_network_setup_external_gateway: "{{ external_gateway }}"
     homegw_network_resolv_nameservers: "{{ external_nameservers }}"
     homegw_network_resolv_search:
-      - "{{ external_domain }}"
-      - "{{ internal_domain }}"
+      - "{{ external_domain }}."
 
 - name: setup
   include_role:
@@ -41,6 +40,7 @@
   vars:
     homegw_iptables_external_eth_device: "{{ external_eth_device }}"
     homegw_iptables_internal_eth_device: "br0"
+    homegw_iptables_external_accept_tcp_ports: "{{ external_accept_tcp_ports }}"
 
 - name: setup postfix
   include_role:
