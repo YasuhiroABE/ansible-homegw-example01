@@ -40,3 +40,6 @@ internal_dhcp_iprange_to: ''
 
 # example: smtp.example.org
 smtp_relayhost: ''
+
+# sshd listen on address
+sshd_listen_address: "{{ internal_hostprefix|ipaddr('address') }}"

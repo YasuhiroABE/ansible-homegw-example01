@@ -79,6 +79,9 @@ The 'internal' means
     
     # example: smtp.example.org
     smtp_relayhost: ''
+    
+    # sshd listen on address
+    sshd_listen_address: "{{ internal_hostprefix|ipaddr('address') }}"
 
 Dependencies
 ------------
@@ -116,6 +119,7 @@ Example Playbook
         internal_dhcp_iprange_from: 192.168.10.200
         internal_dhcp_iprange_to: 192.168.10.240
         smtp_relayhost: smtp.example.org
+        sshd_listen_address: "{{ external_hostprefix|ipaddr('address') }}"
       roles:
          - YasuhiroABE.homegw-example01
 

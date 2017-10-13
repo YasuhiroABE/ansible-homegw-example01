@@ -4,7 +4,7 @@
     name: YasuhiroABE.myfavorite-setting
   vars:
     mfts_hostname: "{{ hostname }}"
-    mfts_sshd_listen_ipaddr: "{{ internal_hostprefix|ipaddr('address') }}"
+    mfts_sshd_listen_ipaddr: "{{ sshd_listen_address }}"
     
 - name: setup my network
   include_role:
