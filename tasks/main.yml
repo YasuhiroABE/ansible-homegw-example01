@@ -5,19 +5,6 @@
   vars:
     mfts_hostname: "{{ hostname }}"
     mfts_sshd_listen_ipaddr: "{{ sshd_listen_address }}"
-    
-- name: setup my network
-  include_role:
-    name: YasuhiroABE.homegw-network
-  vars:
-    homegw_network_setup_br0_hostprefix: "{{ internal_hostprefix }}"
-    homegw_network_setup_br0_devices: "{{ internal_bridge_devices }}"
-    homegw_network_setup_external_device: "{{ external_eth_device }}"
-    homegw_network_setup_external_hostprefix: "{{ external_hostprefix }}"
-    homegw_network_setup_external_gateway: "{{ external_gateway }}"
-    homegw_network_resolv_nameservers: "{{ external_nameservers }}"
-    homegw_network_resolv_search:
-      - "{{ external_domain }}."
 
 - name: setup
   include_role:
@@ -60,4 +47,16 @@
   vars:
     homegw_openntpd_listenon_address: "{{ internal_hostprefix|ipaddr('address') }}"
     homegw_openntpd_server_addresses: "{{ external_ntp_servers }}"
-    
+
+- name: setup my network
+  include_role:
+    name: YasuhiroABE.homegw-network
+  vars:
+    homegw_network_setup_br0_hostprefix: "{{ internal_hostprefix }}"
+    homegw_network_setup_br0_devices: "{{ internal_bridge_devices }}"
+    homegw_network_setup_external_device: "{{ external_eth_device }}"
+    homegw_network_setup_external_hostprefix: "{{ external_hostprefix }}"
+    homegw_network_setup_external_gateway: "{{ external_gateway }}"
+    homegw_network_resolv_nameservers: "{{ external_nameservers }}"
+    homegw_network_resolv_search:
+      - "{{ external_domain }}."
