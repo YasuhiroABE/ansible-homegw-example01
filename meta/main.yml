@@ -37,8 +37,7 @@ galaxy_info:
 dependencies:
   - YasuhiroABE.myfavorite-setting
   - YasuhiroABE.homegw-network
-  - YasuhiroABE.homegw-dnsmasq 
+  - YasuhiroABE.homegw-dnsmasq
   - YasuhiroABE.homegw-iptables
   - YasuhiroABE.homegw-postfix
   - YasuhiroABE.homegw-openntpd
-  
