@@ -6,7 +6,7 @@
     mfts_hostname: "{{ hostname }}"
     mfts_sshd_listen_ipaddr: "{{ sshd_listen_address }}"
 
-- name: setup
+- name: setup dnsmasq
   include_role:
     name: YasuhiroABE.homegw-dnsmasq
   vars:
