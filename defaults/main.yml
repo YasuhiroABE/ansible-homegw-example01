@@ -20,6 +20,9 @@ external_ntp_servers: []
 # added an accept rule to iptables; example: [22,80]  
 external_accept_tcp_ports: []
 
+# added an accept rule to iptables; 
+external_accept_udp_ports: []
+
 # If set, gateway line will be added to the interfaces file.
 external_gateway: ''
 
@@ -41,5 +44,8 @@ internal_dhcp_iprange_to: ''
 # example: smtp.example.org
 smtp_relayhost: ''
 
-# sshd listen on address
+# sshd listen on address (e.g. "{{ external_hostprefix|ipaddr('address') }}")
 sshd_listen_address: "{{ internal_hostprefix|ipaddr('address') }}"
+
+# set openvpn tunnel device name
+openvpn_tunnel_device: []
