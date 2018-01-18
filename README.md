@@ -5,7 +5,7 @@ This role is an example of my galaxy roles.
 It aims to use as a boundary gateway box to manage my sub-network.
 This is NOT an internet gateway or home router.
 
-            <smtp rela>
+            <smtp relay>
                  |
                  |            +----------+---+----------+
      <internet>--+--<router>--|  nic0    |   |          |
