@@ -21,6 +21,12 @@
       to_ipaddr: "{{ internal_dhcp_iprange_to }}"
     dnsmasq_ntpd_enabled: True
 
+- name: set facts for iptables role
+  set_fact:
+    homegw_iptables_accept_input_eth_devices: ['lo', "{{ openvpn_tunnel_device }}"]
+    homegw_iptables_accept_forward_eth_devices: [['lo','lo'],["{{ openvpn_tunnel_device }}","{{ external_eth_device }}"], ["{{ openvpn_tunnel_device }}", "br0"]]
+  when: openvpn_tunnel_device|length > 0
+
 - name: setup iptables
   include_role:
     name: YasuhiroABE.homegw-iptables
@@ -29,14 +35,6 @@
     homegw_iptables_internal_eth_device: "br0"
     homegw_iptables_external_accept_tcp_ports: "{{ external_accept_tcp_ports }}"
     homegw_iptables_external_accept_udp_ports: "{{ external_accept_udp_ports }}"
-
-- name: setup iptables for openvpn
-  include_role:
-    name: YasuhiroABE.homegw-iptables
-  vars:    
-    homegw_iptables_accept_input_eth_devices: ['lo', "{{ openvpn_tunnel_device }}"]
-    homegw_iptables_accept_forward_eth_devices: [['lo','lo'],["{{ openvpn_tunnel_device }}","{{ external_eth_device }}"], ["{{ openvpn_tunnel_device }}", "br0"]]
-  when: openvpn_tunnel_device
 
 - name: setup postfix
   include_role:
